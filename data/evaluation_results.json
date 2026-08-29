@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "question": "What is artificial intelligence?",
+    "expected_answer": "Artificial intelligence is the ability of computer systems to perform tasks that normally require human intelligence.",
+    "category": "general",
+    "actual_answer": "Artificial intelligence (AI) is the simulation of human intelligence by computer systems and machines. These systems are designed to perform tasks that typically require human cognition, such as:\n\n* Learning from data\n* Reasoning and problem-solving\n* Perception (recognizing speech, images, or patterns)\n* Natural language understanding and generation\n\nAI systems achieve this by processing large amounts of data using algorithms and specialized hardware (such as GPUs) to identify patterns and make decisions or predictions."
+  },
+  {
+    "id": 2,
+    "question": "What is machine learning?",
+    "expected_answer": "Machine learning is a method where computer systems learn patterns from data to make predictions or decisions.",
+    "category": "general",
+    "actual_answer": "Machine learning is a subset of artificial intelligence (AI) that enables computer systems to learn from data and improve their performance over time without being explicitly programmed. Instead of following rigid rules, machine learning algorithms identify patterns in data to make predictions or decisions."
+  },
+  {
+    "id": 3,
+    "question": "What is the difference between AI and machine learning?",
+    "expected_answer": "AI is the broader concept of machines performing intelligent tasks, while machine learning is a method used to achieve AI by learning from data.",
+    "category": "comparison",
+    "actual_answer": "**Artificial Intelligence (AI)** is the broader concept of machines being able to carry out tasks in a way that mimics human intelligence. \n\n**Machine Learning (ML)** is a specific subset of AI. It focuses on the development of algorithms that allow computers to learn from data and improve over time without being explicitly programmed.\n\n**In short:** All machine learning is AI, but not all AI is machine learning. \n\n* **AI example:** A chess-playing computer program that uses a set of hardcoded rules to evaluate moves.\n* **ML example:** A recommendation algorithm (like Netflix or Spotify) that analyzes your viewing/listening history to predict what you will want to see or hear next."
+  },
+  {
+    "id": 4,
+    "question": "Translate 'Good morning' into Hindi.",
+    "expected_answer": "सुप्रभात",
+    "category": "translation",
+    "actual_answer": "सुप्रभात (Suprabhat)"
+  },
+  {
+    "id": 5,
+    "question": "Calculate 25 multiplied by 40.",
+    "expected_answer": "1000",
+    "category": "calculator",
+    "actual_answer": "To calculate $25 \\times 40$:\n\n1. Multiply the non-zero digits: $25 \\times 4 = 100$.\n2. Append the zero from the 40 to the result: $100$ with an extra zero becomes $1000$.\n\nResult: **1,000**"
+  }
+]

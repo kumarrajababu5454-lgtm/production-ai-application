@@ -1,0 +1,32 @@
+﻿[
+  {
+    "id": 1,
+    "question": "What is artificial intelligence?",
+    "expected_answer": "Artificial intelligence is the ability of computer systems to perform tasks that normally require human intelligence.",
+    "category": "general"
+  },
+  {
+    "id": 2,
+    "question": "What is machine learning?",
+    "expected_answer": "Machine learning is a method where computer systems learn patterns from data to make predictions or decisions.",
+    "category": "general"
+  },
+  {
+    "id": 3,
+    "question": "What is the difference between AI and machine learning?",
+    "expected_answer": "AI is the broader concept of machines performing intelligent tasks, while machine learning is a method used to achieve AI by learning from data.",
+    "category": "comparison"
+  },
+  {
+    "id": 4,
+    "question": "Translate 'Good morning' into Hindi.",
+    "expected_answer": "सुप्रभात",
+    "category": "translation"
+  },
+  {
+    "id": 5,
+    "question": "Calculate 25 multiplied by 40.",
+    "expected_answer": "1000",
+    "category": "calculator"
+  }
+]

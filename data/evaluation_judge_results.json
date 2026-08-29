@@ -1,0 +1,97 @@
+[
+  {
+    "id": 1,
+    "question": "What is artificial intelligence?",
+    "expected_answer": "Artificial intelligence is the ability of computer systems to perform tasks that normally require human intelligence.",
+    "category": "general",
+    "actual_answer": "Artificial Intelligence (AI) is the simulation of human intelligence processes by computer systems and machines. These processes include learning (acquiring information and rules), reasoning (using rules to reach conclusions), problem-solving, perception, and language understanding.",
+    "evaluation": {
+      "score": 0.6,
+      "passed": true
+    },
+    "llm_judge": {
+      "correctness": 5,
+      "relevance": 5,
+      "completeness": 5,
+      "instruction_following": 5,
+      "overall_score": 5,
+      "reason": "The AI answer is accurate, highly relevant, and actually more comprehensive than the expected answer by detailing specific human intelligence processes like learning, reasoning, and problem-solving."
+    }
+  },
+  {
+    "id": 2,
+    "question": "What is machine learning?",
+    "expected_answer": "Machine learning is a method where computer systems learn patterns from data to make predictions or decisions.",
+    "category": "general",
+    "actual_answer": "Machine learning is a branch of artificial intelligence (AI) and computer science that focuses on using data and algorithms to enable AI to imitate the way humans learn, gradually improving its accuracy over time. \n\nInstead of being explicitly programmed to perform a specific task, a machine learning system uses data to identify patterns, make decisions, and learn from its outcomes with minimal human intervention.",
+    "evaluation": {
+      "score": 0.71,
+      "passed": true
+    },
+    "llm_judge": {
+      "correctness": 5,
+      "relevance": 5,
+      "completeness": 5,
+      "instruction_following": 5,
+      "overall_score": 5,
+      "reason": "The AI answer is accurate, highly relevant, more detailed yet completely aligned with the expected answer, and follows all implicit instructions."
+    }
+  },
+  {
+    "id": 3,
+    "question": "What is the difference between AI and machine learning?",
+    "expected_answer": "AI is the broader concept of machines performing intelligent tasks, while machine learning is a method used to achieve AI by learning from data.",
+    "category": "comparison",
+    "actual_answer": "**Artificial Intelligence (AI)** is the broader concept of machines being able to carry out tasks in a way that mimics human intelligence. \n\n**Machine Learning (ML)** is a current subset or application of AI. It focuses on the idea that systems can learn from data, identify patterns, and make decisions with minimal human intervention, without being explicitly programmed for every outcome.\n\n**In short:** All machine learning is AI, but not all AI is machine learning. \n\n* *AI* includes rule-based expert systems, logic, and robotics. \n* *ML* includes algorithms (like neural networks) that improve automatically through experience and data.",
+    "evaluation": {
+      "score": 0.67,
+      "passed": true
+    },
+    "llm_judge": {
+      "correctness": 5,
+      "relevance": 5,
+      "completeness": 5,
+      "instruction_following": 5,
+      "overall_score": 5,
+      "reason": "The AI answer accurately and comprehensively explains the difference between AI and machine learning, matching the expected answer while providing helpful additional context."
+    }
+  },
+  {
+    "id": 4,
+    "question": "Translate 'Good morning' into Hindi.",
+    "expected_answer": "सुप्रभात",
+    "category": "translation",
+    "actual_answer": "सुप्रभात (Suprabhat)",
+    "evaluation": {
+      "score": 1.0,
+      "passed": true
+    },
+    "llm_judge": {
+      "correctness": 5,
+      "relevance": 5,
+      "completeness": 5,
+      "instruction_following": 5,
+      "overall_score": 5,
+      "reason": "The AI accurately translated 'Good morning' into Hindi as 'सुप्रभात' and thoughtfully included the phonetic transliteration as well."
+    }
+  },
+  {
+    "id": 5,
+    "question": "Calculate 25 multiplied by 40.",
+    "expected_answer": "1000",
+    "category": "calculator",
+    "actual_answer": "To calculate $25 \\times 40$:\n\n1. Multiply the non-zero digits: $25 \\times 4 = 100$.\n2. Append the zero from the $40$ to the result: $100$ becomes $1000$.\n\n**Result:** 1,000",
+    "evaluation": {
+      "score": 1.0,
+      "passed": true
+    },
+    "llm_judge": {
+      "correctness": 5,
+      "relevance": 5,
+      "completeness": 5,
+      "instruction_following": 5,
+      "overall_score": 5,
+      "reason": "The AI accurately calculated the result of 25 multiplied by 40, provided clear steps, and matched the expected answer of 1000."
+    }
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "question": "What is artificial intelligence?",
+    "variant_a": {
+      "answer": "Artificial intelligence is the ability of computer systems to perform tasks that typically require human intelligence, such as learning, reasoning, and problem-solving.",
+      "overall_score": 5,
+      "reason": "Variant A followed the conciseness constraint well, stayed factually accurate, and closely matched the expected answer while adding helpful context."
+    },
+    "variant_b": {
+      "answer": "Artificial intelligence (AI) refers to the capability of computer systems to perform tasks that generally require human intelligence. This includes functions like learning, reasoning, problem-solving, perception, and language understanding. It aims to enable machines to mimic human cognitive processes to solve complex problems efficiently.",
+      "overall_score": 4,
+      "reason": "Variant B provided a correct and well-focused answer with good details, but was slightly less concise than Variant A given the simple nature of the question."
+    }
+  },
+  {
+    "id": 2,
+    "question": "What is machine learning?",
+    "variant_a": {
+      "answer": "Machine learning is a method of data analysis that automates analytical model building, allowing computers to learn from data and make predictions or decisions without being explicitly programmed.",
+      "overall_score": 5,
+      "reason": "Variant A followed the instruction to be clear and concise while accurately answering the question based on the expected answer."
+    },
+    "variant_b": {
+      "answer": "Machine learning is a subfield of artificial intelligence where computer systems use data to learn patterns, enabling them to make predictions or decisions autonomously. It is important because it allows systems to improve their performance over time without explicit reprogramming.",
+      "overall_score": 5,
+      "reason": "Variant B followed all instructions, including explaining important details when necessary, while remaining correct and easy to understand."
+    }
+  },
+  {
+    "id": 3,
+    "question": "What is the difference between AI and machine learning?",
+    "variant_a": {
+      "answer": "AI (Artificial Intelligence) is the broader concept of creating machines capable of performing tasks that typically require human intelligence. Machine learning is a subset of AI that focuses on enabling machines to learn from data and improve over time without being explicitly programmed.",
+      "overall_score": 5,
+      "reason": "The answer is clear, concise, follows all instructions precisely, and matches the expected answer accurately."
+    },
+    "variant_b": {
+      "answer": "Artificial Intelligence (AI) is a broad field encompassing any technique that enables computers to mimic human intelligence. Machine Learning (ML) is a specific subset of AI where systems learn and improve from data rather than through explicit programming. In short, AI is the overarching goal, while machine learning is a practical method used to achieve it.",
+      "overall_score": 5,
+      "reason": "The answer is correct, easy to understand, provides helpful details, and aligns fully with the expected answer while following all instructions."
+    }
+  },
+  {
+    "id": 4,
+    "question": "Translate 'Good morning' into Hindi.",
+    "variant_a": {
+      "answer": "सुप्रभात",
+      "overall_score": 5,
+      "reason": "Variant A followed the instruction to be clear and concise, providing the exact Hindi translation without unnecessary filler."
+    },
+    "variant_b": {
+      "answer": "सुप्रभात (Suprabhat)",
+      "overall_score": 5,
+      "reason": "Variant B provided the correct translation along with the transliteration, which fits well with the instruction to keep the response easy to understand."
+    }
+  },
+  {
+    "id": 5,
+    "question": "Calculate 25 multiplied by 40.",
+    "variant_a": {
+      "answer": "1000",
+      "overall_score": 5,
+      "reason": "The answer is mathematically correct, perfectly follows the instruction to be clear and concise, and matches the expected answer."
+    },
+    "variant_b": {
+      "answer": "25 multiplied by 40 is 1000.",
+      "overall_score": 5,
+      "reason": "The answer is mathematically correct, focused, easy to understand, and follows all instructions in Variant B."
+    }
+  }
+]
