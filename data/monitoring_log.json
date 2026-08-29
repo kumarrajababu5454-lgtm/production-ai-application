@@ -10,5 +10,11 @@
     "route": "general",
     "latency_seconds": 0.25,
     "cached": false
+  },
+  {
+    "input_length": 5,
+    "route": "general",
+    "latency_seconds": 0.25,
+    "cached": false
   }
 ]
