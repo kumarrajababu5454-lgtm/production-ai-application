@@ -551,3 +551,801 @@ The purpose of this project is to learn and demonstrate how these concepts can b
 Because you specifically asked for the README to **match the code exactly**, I would **not yet trust the sections for the exact model names, exact guardrail rules, or exact Render start command** until we have the actual files available.
 
 If you have the project files attached to this chat, send/upload them and I can verify those exact details and give
+
+
+
+
+
+
+
+Project 4 -
+
+@'
+# Production AI Application + AI Evaluation Platform
+
+A production-style AI application built with Python, Streamlit, and Google Gemini.
+
+The project demonstrates two connected parts:
+
+1. A production-oriented AI application.
+2. An evaluation and continuous-improvement platform built around that application.
+
+The production application includes guardrails, routing, model selection, prompt adaptation, caching, monitoring, optimization, and error handling.
+
+The evaluation platform measures AI quality using automated evaluation, LLM-as-Judge evaluation, human feedback, failure analysis, A/B testing, monitoring, and continuous improvement.
+
+---
+
+## Project Overview
+
+The project starts with a simple AI application and adds production-oriented engineering layers around it.
+
+The main application flow is:
+
+```text
+User
+  ↓
+Guardrails
+  ↓
+Cache Check
+  ↓
+Router
+  ↓
+Model Selection
+  ↓
+Prompt Adaptation
+  ↓
+Gemini API
+  ↓
+Response
+  ↓
+Cache
+  ↓
+Monitoring
+  ↓
+User
+
+Project 4 adds an evaluation loop around the application:
+
+AI Application
+      ↓
+Evaluation Dataset
+      ↓
+Automated Evaluation
+      ↓
+LLM-as-Judge
+      ↓
+Human Feedback
+      ↓
+Failure Analysis
+      ↓
+A/B Testing
+      ↓
+Continuous Improvement
+      ↓
+Evaluate Again
+
+The purpose is not only to build an AI application, but also to measure its quality and create a repeatable improvement process.
+
+Part 1 — Production AI Application
+Main Features
+Streamlit Chat Interface
+
+The frontend provides a browser-based chat interface.
+
+The user can:
+
+Enter a message
+Send it to the AI application
+View the AI response
+Continue using the application
+
+Frontend:
+
+frontend/app.py
+Guardrails
+
+The application validates user input before sending it to the AI model.
+
+The current validation includes:
+
+Empty input handling
+Input length checking
+
+Implementation:
+
+src/guardrails.py
+Request Routing
+
+The router separates requests into application routes.
+
+Current routes include:
+
+calculator
+summarization
+translation
+general
+
+Implementation:
+
+src/router.py
+Model Selection
+
+The application selects a Gemini model based on request complexity.
+
+Complex-request indicators include terms such as:
+
+analyze
+analyse
+explain in detail
+compare
+reason
+complex
+step by step
+deep analysis
+architecture
+design a system
+debug
+
+Implementation:
+
+src/model_selector.py
+
+Model configuration:
+
+src/config.py
+
+The model names are controlled through the application configuration.
+
+Prompt Adaptation
+
+The application changes the prompt instructions based on the selected route.
+
+For example:
+
+Calculator requests focus on mathematical accuracy.
+Summarization requests focus on important information.
+Translation requests focus on preserving meaning.
+General requests use the general assistant behavior.
+
+Implementation:
+
+src/adaptation.py
+Response Caching
+
+The application caches responses for repeated requests.
+
+The cache:
+
+Normalizes user input
+Uses a 5-minute TTL
+Supports up to 100 entries
+Removes the oldest entry when the cache reaches its limit
+
+Implementation:
+
+src/cache.py
+
+Caching helps avoid unnecessary Gemini API requests for repeated requests.
+
+Monitoring
+
+The monitoring layer records information about application requests.
+
+The recorded information includes:
+
+Input length
+Route
+Request latency
+Whether the response came from cache
+
+Implementation:
+
+src/monitoring.py
+
+The monitoring data is also used by the Project 4 evaluation platform.
+
+Error and Quota Handling
+
+The application handles Gemini API quota/rate-limit errors.
+
+Instead of exposing the raw API exception, the user receives a simpler message:
+
+The AI service has temporarily reached its API quota.
+Please try again later.
+
+This behavior was observed during local testing.
+
+Part 2 — AI Evaluation & Continuous Improvement Platform
+
+Project 4 is built on top of the production AI application.
+
+Its purpose is to answer an important question:
+
+How do we know whether an AI application is working well, and how do we improve it when it does not?
+
+The evaluation platform provides a repeatable process for measuring AI quality.
+
+Evaluation Dataset
+
+The project contains evaluation cases used to test the AI application.
+
+The dataset is stored in:
+
+data/evaluation_dataset.json
+
+Each evaluation case contains information such as:
+
+User question
+Expected answer
+Category
+
+The evaluation dataset allows the same test cases to be run repeatedly.
+
+Automated Evaluation
+
+The first evaluation layer compares the generated answer against the expected answer using automated scoring.
+
+Results are stored in:
+
+data/evaluation_results.json
+data/evaluation_scored_results.json
+
+The current evaluation contains:
+
+Total tests: 5
+Passed: 5
+Failed: 0
+Average score: 0.80
+
+Automated evaluation is useful for repeatable checks, but it does not completely describe the quality of an AI response.
+
+LLM-as-Judge
+
+The project also uses an LLM-based judge to evaluate generated answers.
+
+The judge evaluates dimensions such as:
+
+Correctness
+Relevance
+Completeness
+Instruction following
+
+Results are stored in:
+
+data/evaluation_judge_results.json
+
+The current evaluation produced:
+
+Total tests: 5
+Average judge score: 5.00/5
+
+This provides a second quality signal in addition to automated scoring.
+
+Human Feedback
+
+The platform supports human feedback for individual evaluation results.
+
+A reviewer can provide:
+
+Rating
+Approval/rejection
+Optional comment
+
+Human feedback is stored in:
+
+data/human_feedback.json
+
+Human feedback is useful because automated metrics and LLM judges cannot capture every aspect of user experience.
+
+Failure Analysis
+
+The project analyzes evaluation results to identify failed cases.
+
+Implementation:
+
+src/evaluation/failure_analysis.py
+
+Results:
+
+data/failure_analysis.json
+
+The current evaluation produced:
+
+Failure cases: 0
+All current evaluation cases passed.
+
+When failures exist, the failure report can identify information such as:
+
+Test ID
+Category
+Automated score
+LLM judge score
+Failure reasons
+Judge explanation
+A/B Testing
+
+The project includes A/B testing for comparing two prompt variants.
+
+The purpose is to determine whether an alternative prompt/configuration performs better.
+
+Results are stored in:
+
+data/ab_test_results.json
+
+The completed A/B test produced:
+
+Variant A: 5.00/5
+Variant B: 4.80/5
+Winner: Variant A
+
+This demonstrates how an AI system can compare alternative approaches instead of changing prompts based only on intuition.
+
+Online Monitoring
+
+The evaluation platform also reads application monitoring information.
+
+Monitoring can show:
+
+Total requests
+Average latency
+Cache hits
+Cache hit rate
+Route usage
+
+Monitoring results are based on:
+
+data/monitoring_log.json
+
+The monitoring layer connects application behavior with the evaluation process.
+
+Continuous Improvement
+
+The platform combines the evaluation components into a continuous-improvement workflow.
+
+The workflow is:
+
+Run AI Application
+        ↓
+Collect Evaluation Results
+        ↓
+Automated Evaluation
+        ↓
+LLM-as-Judge
+        ↓
+Human Feedback
+        ↓
+Failure Analysis
+        ↓
+A/B Testing
+        ↓
+Choose Better Variant
+        ↓
+Evaluate Again
+
+The continuous improvement analysis is implemented in:
+
+src/evaluation/continuous_improvement.py
+
+Results are stored in:
+
+data/continuous_improvement.json
+
+The current analysis reports:
+
+Failure cases: 0
+A/B Variant A: 5.0/5
+A/B Variant B: 4.8/5
+A/B Winner: Variant A
+
+There is currently not enough historical evaluation data to calculate a quality change between two evaluation runs.
+
+This is expected because quality-change measurement requires at least two evaluation runs.
+
+Evaluation Dashboard
+
+Project 4 includes a separate Streamlit dashboard:
+
+evaluation_app/app.py
+
+The dashboard brings the evaluation information together in one place.
+
+It displays areas such as:
+
+Latest evaluation
+Evaluation history
+Evaluation results
+Human feedback
+A/B testing
+Online monitoring
+Failure analysis
+Continuous improvement
+
+Run the dashboard with:
+
+streamlit run evaluation_app/app.py
+Project 4 Architecture
+
+The overall Project 4 architecture is:
+
+                    PRODUCTION AI APPLICATION
+                              │
+                              ▼
+                     Evaluation Dataset
+                              │
+                              ▼
+                    Automated Evaluation
+                              │
+                              ▼
+                       LLM-as-Judge
+                              │
+                              ▼
+                       Human Feedback
+                              │
+                              ▼
+                       Failure Analysis
+                              │
+                              ▼
+                         A/B Testing
+                              │
+                              ▼
+                    Continuous Improvement
+                              │
+                              ▼
+                       Evaluate Again
+
+This creates a feedback loop instead of treating evaluation as a one-time activity.
+
+Project Structure
+production-ai-application/
+│
+├── frontend/
+│   └── app.py
+│
+├── evaluation_app/
+│   └── app.py
+│
+├── src/
+│   ├── adaptation.py
+│   ├── app.py
+│   ├── cache.py
+│   ├── config.py
+│   ├── guardrails.py
+│   ├── health.py
+│   ├── models.py
+│   ├── model_selector.py
+│   ├── monitoring.py
+│   ├── optimization.py
+│   ├── router.py
+│   │
+│   └── evaluation/
+│       ├── ab_test.py
+│       ├── continuous_improvement.py
+│       ├── failure_analysis.py
+│       └── ...
+│
+├── data/
+│   ├── evaluation_dataset.json
+│   ├── evaluation_results.json
+│   ├── evaluation_scored_results.json
+│   ├── evaluation_judge_results.json
+│   ├── evaluation_history.json
+│   ├── ab_test_results.json
+│   ├── human_feedback.json
+│   ├── monitoring_log.json
+│   ├── failure_analysis.json
+│   └── continuous_improvement.json
+│
+├── tests/
+│   └── test_app.py
+│
+├── .env
+├── .env.example
+├── .gitignore
+├── README.md
+├── render.yaml
+└── requirements.txt
+Important Files
+File	Purpose
+frontend/app.py	Production AI Streamlit interface
+evaluation_app/app.py	Evaluation and monitoring dashboard
+src/app.py	Main AI application pipeline
+src/config.py	Gemini configuration and model settings
+src/guardrails.py	Input validation
+src/router.py	Request routing
+src/model_selector.py	Model selection
+src/adaptation.py	Prompt adaptation
+src/cache.py	Response caching
+src/monitoring.py	Application monitoring
+src/evaluation/	Evaluation and improvement components
+data/	Evaluation and monitoring results
+tests/test_app.py	Application tests
+requirements.txt	Python dependencies
+render.yaml	Render deployment configuration
+Installation
+
+Move into the project directory:
+
+cd production-ai-application
+
+Install the dependencies:
+
+pip install -r requirements.txt
+
+This project does not require creating a separate Python virtual environment.
+
+Environment Variables
+
+The application requires a Gemini API key.
+
+Create a .env file in the project root:
+
+GEMINI_API_KEY=your_gemini_api_key
+
+The application loads the key from the environment.
+
+Important Security Rule
+
+Never commit the real .env file to GitHub.
+
+The project includes:
+
+.env.example
+
+The real API key should never be placed inside:
+
+README.md
+Python source code
+GitHub repositories
+Screenshots
+Public documentation
+Run the Production Application
+
+Start the main Streamlit application:
+
+streamlit run frontend/app.py
+
+Streamlit will provide a local URL.
+
+Open that URL in a browser to use the production AI application.
+
+Run the Evaluation Dashboard
+
+Start the Project 4 dashboard:
+
+streamlit run evaluation_app/app.py
+
+The dashboard provides a visual view of evaluation, A/B testing, monitoring, failure analysis, and continuous improvement.
+
+Testing
+
+The project uses pytest.
+
+Run the application test suite explicitly with:
+
+pytest -q tests
+
+The verified test result is:
+
+15 passed
+
+Python compilation was also verified successfully with:
+
+python -m compileall -q src tests evaluation_app
+Evaluation Commands
+Failure Analysis
+python -m src.evaluation.failure_analysis
+
+Current result:
+
+Failure cases: 0
+Continuous Improvement
+python -m src.evaluation.continuous_improvement
+
+Current result:
+
+A/B Variant A: 5.0/5
+A/B Variant B: 4.8/5
+A/B Winner: Variant A
+A/B Testing
+python -m src.evaluation.ab_test
+
+The completed experiment selected Variant A as the winner.
+
+Evaluation Results
+
+The current completed evaluation produced:
+
+Automated Evaluation
+--------------------
+Total tests: 5
+Average score: 0.80
+Passed: 5
+Failed: 0
+
+LLM-as-Judge
+------------
+Total tests: 5
+Average score: 5.00/5
+
+A/B Testing
+-----------
+Variant A: 5.00/5
+Variant B: 4.80/5
+Winner: Variant A
+
+Failure Analysis
+----------------
+Failure cases: 0
+
+These values describe the current evaluation run and should not be treated as permanent benchmark results.
+
+Production Architecture
+
+A basic AI application could look like:
+
+User
+  ↓
+Gemini
+  ↓
+Response
+
+This project adds production-oriented layers:
+
+                 USER
+                   ↓
+              GUARDRAILS
+                   ↓
+              CACHE CHECK
+                   ↓
+                ROUTER
+                   ↓
+            MODEL SELECTION
+                   ↓
+           PROMPT ADAPTATION
+                   ↓
+              GEMINI API
+                   ↓
+               RESPONSE
+                   ↓
+                 CACHE
+                   ↓
+              MONITORING
+                   ↓
+                 USER
+
+Project 4 then evaluates this application:
+
+Production AI Application
+          ↓
+      Evaluation
+          ↓
+    Quality Signals
+          ↓
+   Failure Analysis
+          ↓
+     A/B Testing
+          ↓
+     Improvement
+          ↓
+     Evaluation
+Separation of Concerns
+
+Different components have different responsibilities.
+
+Guardrails handle input validation.
+Router handles request routing.
+Model selection handles model choice.
+Prompt adaptation handles prompt preparation.
+Cache handles repeated requests.
+Monitoring records application behavior.
+Evaluation measures AI quality.
+LLM-as-Judge provides an additional quality signal.
+Human feedback captures reviewer input.
+Failure analysis identifies problems.
+A/B testing compares alternatives.
+Continuous improvement connects these components.
+Streamlit provides the user interfaces.
+
+This separation keeps the project easier to understand and maintain.
+
+Deployment
+
+The project contains:
+
+render.yaml
+
+This provides Render deployment configuration.
+
+The application should be connected to Render and configured with the required environment variables.
+
+No production URL is documented here unless it has been confirmed.
+
+Technology Stack
+
+The project uses:
+
+Python
+Streamlit
+Google Gemini API
+pytest
+python-dotenv
+Pydantic
+
+Additional dependencies are listed in:
+
+requirements.txt
+What This Project Demonstrates
+
+This project demonstrates how an AI system can be developed in stages:
+
+AI Model
+   ↓
+Application
+   ↓
+Production Engineering
+   ↓
+Evaluation
+   ↓
+Monitoring
+   ↓
+Failure Analysis
+   ↓
+A/B Testing
+   ↓
+Continuous Improvement
+
+The important lesson is that building an AI application does not end when the model produces an answer.
+
+The system also needs ways to:
+
+Measure quality
+Detect failures
+Collect feedback
+Monitor behavior
+Compare alternatives
+Improve over time
+Future Improvements
+
+Possible future improvements include:
+
+Larger evaluation datasets
+More evaluation categories
+More detailed monitoring
+More human feedback
+More A/B experiments
+Historical quality tracking across many runs
+Stronger observability
+Authentication
+Persistent user data
+Production-scale infrastructure
+
+These are future improvements and are not claimed as currently implemented features.
+
+Disclaimer
+
+This is a production-style learning and portfolio project.
+
+It demonstrates concepts used when building production-oriented AI applications and AI evaluation systems.
+
+"Production-style" does not mean that the project is guaranteed to be production-ready for enterprise-scale workloads.
+
+A real production deployment may require additional work for areas such as:
+
+Security
+Authentication
+Authorization
+Scalability
+Reliability
+Persistent storage
+Observability
+Cost controls
+Privacy
+Compliance
+Load testing
+Disaster recovery
+
+The purpose of this project is to demonstrate how these concepts can be combined into a structured AI application and continuous evaluation workflow.
+'@ | Set-Content README.md -Encoding UTF8
+
+git diff --stat README.md
